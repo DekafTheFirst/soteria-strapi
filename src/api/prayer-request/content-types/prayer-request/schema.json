@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prayer_requests",
+  "info": {
+    "singularName": "prayer-request",
+    "pluralName": "prayer-requests",
+    "displayName": "PrayerRequest"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "prayerRequest": {
+      "type": "richtext"
+    }
+  }
+}

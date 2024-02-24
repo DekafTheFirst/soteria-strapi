@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "registerations",
+  "info": {
+    "singularName": "registeration",
+    "pluralName": "registerations",
+    "displayName": "Registerations"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "registerations"
+    }
+  }
+}
