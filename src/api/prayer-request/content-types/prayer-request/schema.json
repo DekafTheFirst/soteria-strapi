@@ -4,14 +4,15 @@
   "info": {
     "singularName": "prayer-request",
     "pluralName": "prayer-requests",
-    "displayName": "PrayerRequest"
+    "displayName": "PrayerRequest",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "firstName": {
       "type": "string",
       "required": true
     },
@@ -24,6 +25,10 @@
     },
     "prayerRequest": {
       "type": "richtext"
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
     }
   }
 }

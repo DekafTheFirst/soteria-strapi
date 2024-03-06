@@ -12,12 +12,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
-    },
     "date": {
-      "type": "datetime",
+      "type": "date",
       "required": true
     },
     "description": {
@@ -25,6 +21,37 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "registerations": {
+      "type": "json",
+      "private": true
+    },
+    "time": {
+      "type": "time"
+    },
+    "specialStyling": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "theme": {
+      "type": "text",
+      "required": false
+    },
+    "video": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -35,8 +62,9 @@
         "audios"
       ]
     },
-    "registerations": {
-      "type": "json"
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }

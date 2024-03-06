@@ -799,11 +799,18 @@ export interface ApiEventEvent extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    date: Attribute.DateTime & Attribute.Required;
+    date: Attribute.Date & Attribute.Required;
     description: Attribute.RichText & Attribute.Required;
-    image: Attribute.Media;
-    registerations: Attribute.JSON;
+    image: Attribute.Media & Attribute.Required;
+    registerations: Attribute.JSON & Attribute.Private;
+    time: Attribute.Time;
+    specialStyling: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID & Attribute.Required;
+    theme: Attribute.Text;
+    video: Attribute.Media;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -828,12 +835,13 @@ export interface ApiLiveStreamLiveStream extends Schema.SingleType {
     singularName: 'live-stream';
     pluralName: 'live-streams';
     displayName: 'LiveStream';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    link: Attribute.String;
+    youtubeVideoID: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -858,15 +866,17 @@ export interface ApiPrayerRequestPrayerRequest extends Schema.CollectionType {
     singularName: 'prayer-request';
     pluralName: 'prayer-requests';
     displayName: 'PrayerRequest';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    firstName: Attribute.String & Attribute.Required;
     email: Attribute.Email & Attribute.Required;
     phoneNumber: Attribute.String;
     prayerRequest: Attribute.RichText;
+    lastName: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
