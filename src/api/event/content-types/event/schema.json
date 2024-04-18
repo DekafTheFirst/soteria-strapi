@@ -65,6 +65,9 @@
     "title": {
       "type": "string",
       "required": true
+    },
+    "dateTime": {
+      "type": "datetime"
     }
   }
 }

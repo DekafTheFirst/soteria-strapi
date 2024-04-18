@@ -811,6 +811,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
     theme: Attribute.Text;
     video: Attribute.Media;
     title: Attribute.String & Attribute.Required;
+    dateTime: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
