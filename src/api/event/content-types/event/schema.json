@@ -38,14 +38,10 @@
     "time": {
       "type": "time"
     },
-    "specialStyling": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
     "slug": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "title"
     },
     "theme": {
       "type": "text",
@@ -66,8 +62,18 @@
       "type": "string",
       "required": true
     },
-    "dateTime": {
-      "type": "datetime"
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Men",
+        "Women",
+        "Youths",
+        "Children",
+        "Teenagers"
+      ]
+    },
+    "registerationLink": {
+      "type": "string"
     }
   }
 }

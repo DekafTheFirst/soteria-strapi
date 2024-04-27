@@ -804,14 +804,14 @@ export interface ApiEventEvent extends Schema.CollectionType {
     image: Attribute.Media & Attribute.Required;
     registerations: Attribute.JSON & Attribute.Private;
     time: Attribute.Time;
-    specialStyling: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    slug: Attribute.UID & Attribute.Required;
+    slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
     theme: Attribute.Text;
     video: Attribute.Media;
     title: Attribute.String & Attribute.Required;
-    dateTime: Attribute.DateTime;
+    type: Attribute.Enumeration<
+      ['Men', 'Women', 'Youths', 'Children', 'Teenagers']
+    >;
+    registerationLink: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -873,11 +873,11 @@ export interface ApiPrayerRequestPrayerRequest extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    firstName: Attribute.String & Attribute.Required;
-    email: Attribute.Email & Attribute.Required;
+    firstName: Attribute.String;
+    email: Attribute.Email;
     phoneNumber: Attribute.String;
-    prayerRequest: Attribute.RichText;
-    lastName: Attribute.String & Attribute.Required;
+    prayerRequest: Attribute.RichText & Attribute.Required;
+    lastName: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

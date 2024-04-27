@@ -14,21 +14,22 @@
   "attributes": {
     "firstName": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "email": {
       "type": "email",
-      "required": true
+      "required": false
     },
     "phoneNumber": {
       "type": "string"
     },
     "prayerRequest": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "lastName": {
       "type": "string",
-      "required": true
+      "required": false
     }
   }
 }
