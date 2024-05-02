@@ -861,6 +861,40 @@ export interface ApiLiveStreamLiveStream extends Schema.SingleType {
   };
 }
 
+export interface ApiMemberMember extends Schema.CollectionType {
+  collectionName: 'members';
+  info: {
+    singularName: 'member';
+    pluralName: 'members';
+    displayName: 'Member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstName: Attribute.String & Attribute.Required;
+    lastName: Attribute.String & Attribute.Required;
+    email: Attribute.String;
+    phoneNumber: Attribute.String;
+    address: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::member.member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::member.member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPrayerRequestPrayerRequest extends Schema.CollectionType {
   collectionName: 'prayer_requests';
   info: {
@@ -984,6 +1018,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::event.event': ApiEventEvent;
       'api::live-stream.live-stream': ApiLiveStreamLiveStream;
+      'api::member.member': ApiMemberMember;
       'api::prayer-request.prayer-request': ApiPrayerRequestPrayerRequest;
       'api::registeration.registeration': ApiRegisterationRegisteration;
       'api::sermon.sermon': ApiSermonSermon;
