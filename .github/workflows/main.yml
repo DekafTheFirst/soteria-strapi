@@ -23,7 +23,7 @@ jobs:
     #     which npm
     - name: Print Node.js and npm Versions
       run: |
-        echo "Node.js version: $(node -v)"
+        echo "Node.js version: $(nodejs -v)"
         echo "npm version: $(npm -v)"
     
 
