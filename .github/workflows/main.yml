@@ -23,7 +23,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
-          cd /soteria-strapi/
+          cd ~/soteria-strapi/
           git pull origin main
           git status
           npm install --only=prod
