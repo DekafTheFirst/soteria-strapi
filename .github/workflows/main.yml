@@ -15,12 +15,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:       
-    - name: Print Environment Variables
-      run: |
-        echo "GitHub Actions Environment:"
-        env
-        echo "Which npm:"
-        which npm
+    # - name: Print Environment Variables
+    #   run: |
+    #     echo "GitHub Actions Environment:"
+    #     env
+    #     echo "Which npm:"
+    #     which npm
           
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
@@ -33,4 +33,4 @@ jobs:
           cd ~/soteria-strapi/
           git pull origin main
           git status
-          npm install --only=prod
+          /home/soteria/.nvm/versions/node/v18.20.2/bin/npm install --only=prod
