@@ -15,6 +15,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:       
+    - name: Print Environment Variables
+      run: |
+        echo "GitHub Actions Environment:"
+        env
+        echo "Which npm:"
+        which npm
+          
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
       with:
