@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "latest_sermons",
+  "info": {
+    "singularName": "latest-sermon",
+    "pluralName": "latest-sermons",
+    "displayName": "LatestSermon"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "preacher": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "youtubeLink": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  }
+}
