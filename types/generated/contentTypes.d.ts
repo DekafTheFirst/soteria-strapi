@@ -881,7 +881,6 @@ export interface ApiMemberMember extends Schema.CollectionType {
     email: Attribute.String;
     phoneNumber: Attribute.String;
     address: Attribute.String;
-    testing: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

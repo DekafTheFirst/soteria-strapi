@@ -28,9 +28,6 @@
     },
     "address": {
       "type": "string"
-    },
-    "testing": {
-      "type": "string"
     }
   }
 }
