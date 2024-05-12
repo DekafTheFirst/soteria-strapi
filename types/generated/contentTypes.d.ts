@@ -968,40 +968,6 @@ export interface ApiRegisterationRegisteration extends Schema.CollectionType {
   };
 }
 
-export interface ApiSermonSermon extends Schema.CollectionType {
-  collectionName: 'sermons';
-  info: {
-    singularName: 'sermon';
-    pluralName: 'sermons';
-    displayName: 'Sermon';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    preacher: Attribute.String;
-    date: Attribute.Date;
-    desc: Attribute.String;
-    link: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::sermon.sermon',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::sermon.sermon',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1025,7 +991,6 @@ declare module '@strapi/types' {
       'api::member.member': ApiMemberMember;
       'api::prayer-request.prayer-request': ApiPrayerRequestPrayerRequest;
       'api::registeration.registeration': ApiRegisterationRegisteration;
-      'api::sermon.sermon': ApiSermonSermon;
     }
   }
 }

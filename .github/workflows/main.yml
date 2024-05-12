@@ -39,6 +39,6 @@ jobs:
           cd ~/soteria-strapi/
           git pull origin main
           git status
-          /home/soteria/.nvm/versions/node/v18.20.2/bin/npm install --only=prod
-          /home/soteria/.nvm/versions/node/v18.20.2/bin/npm run build
+          npm install --only=prod
+          npm run build
           pm2 restart strapi
