@@ -4,7 +4,8 @@
   "info": {
     "singularName": "latest-sermon",
     "pluralName": "latest-sermons",
-    "displayName": "LatestSermon"
+    "displayName": "LatestSermon",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

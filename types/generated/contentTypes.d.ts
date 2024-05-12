@@ -802,7 +802,6 @@ export interface ApiEventEvent extends Schema.CollectionType {
     date: Attribute.Date & Attribute.Required;
     description: Attribute.RichText & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
-    registerations: Attribute.JSON & Attribute.Private;
     time: Attribute.Time;
     slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
     theme: Attribute.Text;
@@ -812,6 +811,9 @@ export interface ApiEventEvent extends Schema.CollectionType {
       ['Men', 'Women', 'Youths', 'Children', 'Teenagers']
     >;
     registerationLink: Attribute.String;
+    venue: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'1928 Woodlawn Dr, Woodlawn, MD 21207, USA'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -836,6 +838,7 @@ export interface ApiLatestSermonLatestSermon extends Schema.SingleType {
     singularName: 'latest-sermon';
     pluralName: 'latest-sermons';
     displayName: 'LatestSermon';
+    description: '';
   };
   options: {
     draftAndPublish: true;

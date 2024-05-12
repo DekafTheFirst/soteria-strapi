@@ -25,15 +25,8 @@
       "multiple": false,
       "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
-    },
-    "registerations": {
-      "type": "json",
-      "private": true
     },
     "time": {
       "type": "time"
@@ -70,10 +63,16 @@
         "Youths",
         "Children",
         "Teenagers"
-      ]
+      ],
+      "required": false
     },
     "registerationLink": {
       "type": "string"
+    },
+    "venue": {
+      "type": "string",
+      "default": "1928 Woodlawn Dr, Woodlawn, MD 21207, USA",
+      "required": true
     }
   }
 }
