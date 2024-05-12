@@ -4,7 +4,8 @@
   "info": {
     "singularName": "member",
     "pluralName": "members",
-    "displayName": "Member"
+    "displayName": "Member",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,6 +27,9 @@
       "type": "string"
     },
     "address": {
+      "type": "string"
+    },
+    "testing": {
       "type": "string"
     }
   }
