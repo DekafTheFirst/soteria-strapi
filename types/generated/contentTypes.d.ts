@@ -362,190 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiEventEvent extends Schema.CollectionType {
-  collectionName: 'events';
-  info: {
-    singularName: 'event';
-    pluralName: 'events';
-    displayName: 'event';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    date: Attribute.Date & Attribute.Required;
-    description: Attribute.RichText & Attribute.Required;
-    image: Attribute.Media & Attribute.Required;
-    time: Attribute.Time;
-    slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
-    theme: Attribute.Text;
-    video: Attribute.Media;
-    title: Attribute.String & Attribute.Required;
-    type: Attribute.Enumeration<
-      ['Men', 'Women', 'Youths', 'Children', 'Teenagers']
-    >;
-    registerationLink: Attribute.String;
-    venue: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'1928 Woodlawn Dr, Woodlawn, MD 21207, USA'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::event.event',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::event.event',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLatestSermonLatestSermon extends Schema.SingleType {
-  collectionName: 'latest_sermons';
-  info: {
-    singularName: 'latest-sermon';
-    pluralName: 'latest-sermons';
-    displayName: 'LatestSermon';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    preacher: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    youtubeLink: Attribute.String & Attribute.Required;
-    date: Attribute.Date & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::latest-sermon.latest-sermon',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::latest-sermon.latest-sermon',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiMemberMember extends Schema.CollectionType {
-  collectionName: 'members';
-  info: {
-    singularName: 'member';
-    pluralName: 'members';
-    displayName: 'Member';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    firstName: Attribute.String & Attribute.Required;
-    lastName: Attribute.String & Attribute.Required;
-    email: Attribute.String;
-    phoneNumber: Attribute.String;
-    address: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::member.member',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::member.member',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPrayerRequestPrayerRequest extends Schema.CollectionType {
-  collectionName: 'prayer_requests';
-  info: {
-    singularName: 'prayer-request';
-    pluralName: 'prayer-requests';
-    displayName: 'PrayerRequest';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    firstName: Attribute.String;
-    email: Attribute.Email;
-    phoneNumber: Attribute.String;
-    prayerRequest: Attribute.RichText & Attribute.Required;
-    lastName: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::prayer-request.prayer-request',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::prayer-request.prayer-request',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRegisterationRegisteration extends Schema.CollectionType {
-  collectionName: 'registerations';
-  info: {
-    singularName: 'registeration';
-    pluralName: 'registerations';
-    displayName: 'Registerations';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    users_permissions_users: Attribute.Relation<
-      'api::registeration.registeration',
-      'manyToMany',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::registeration.registeration',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::registeration.registeration',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -698,6 +514,10 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
     releasedAt: Attribute.DateTime;
     scheduledAt: Attribute.DateTime;
     timezone: Attribute.String;
+    status: Attribute.Enumeration<
+      ['ready', 'blocked', 'failed', 'done', 'empty']
+    > &
+      Attribute.Required;
     actions: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToMany',
@@ -752,6 +572,7 @@ export interface PluginContentReleasesReleaseAction
       'manyToOne',
       'plugin::content-releases.release'
     >;
+    isEntryValid: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -971,6 +792,192 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
+  info: {
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'event';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    startDate: Attribute.Date & Attribute.Required;
+    description: Attribute.RichText & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    time: Attribute.Time;
+    slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
+    theme: Attribute.Text;
+    video: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<
+      ['Men', 'Women', 'Youths', 'Children', 'Teenagers']
+    >;
+    registerationLink: Attribute.String;
+    venue: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'1928 Woodlawn Dr, Woodlawn, MD 21207, USA'>;
+    endDate: Attribute.Date;
+    desc: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLatestSermonLatestSermon extends Schema.SingleType {
+  collectionName: 'latest_sermons';
+  info: {
+    singularName: 'latest-sermon';
+    pluralName: 'latest-sermons';
+    displayName: 'LatestSermon';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    preacher: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    youtubeLink: Attribute.String & Attribute.Required;
+    date: Attribute.Date & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::latest-sermon.latest-sermon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::latest-sermon.latest-sermon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMemberMember extends Schema.CollectionType {
+  collectionName: 'members';
+  info: {
+    singularName: 'member';
+    pluralName: 'members';
+    displayName: 'Member';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstName: Attribute.String & Attribute.Required;
+    lastName: Attribute.String & Attribute.Required;
+    email: Attribute.String;
+    phoneNumber: Attribute.String;
+    address: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::member.member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::member.member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPrayerRequestPrayerRequest extends Schema.CollectionType {
+  collectionName: 'prayer_requests';
+  info: {
+    singularName: 'prayer-request';
+    pluralName: 'prayer-requests';
+    displayName: 'PrayerRequest';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstName: Attribute.String;
+    email: Attribute.Email;
+    phoneNumber: Attribute.String;
+    prayerRequest: Attribute.RichText & Attribute.Required;
+    lastName: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::prayer-request.prayer-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::prayer-request.prayer-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRegisterationRegisteration extends Schema.CollectionType {
+  collectionName: 'registerations';
+  info: {
+    singularName: 'registeration';
+    pluralName: 'registerations';
+    displayName: 'Registerations';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    users_permissions_users: Attribute.Relation<
+      'api::registeration.registeration',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::registeration.registeration',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::registeration.registeration',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -981,11 +988,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::event.event': ApiEventEvent;
-      'api::latest-sermon.latest-sermon': ApiLatestSermonLatestSermon;
-      'api::member.member': ApiMemberMember;
-      'api::prayer-request.prayer-request': ApiPrayerRequestPrayerRequest;
-      'api::registeration.registeration': ApiRegisterationRegisteration;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -994,6 +996,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::event.event': ApiEventEvent;
+      'api::latest-sermon.latest-sermon': ApiLatestSermonLatestSermon;
+      'api::member.member': ApiMemberMember;
+      'api::prayer-request.prayer-request': ApiPrayerRequestPrayerRequest;
+      'api::registeration.registeration': ApiRegisterationRegisteration;
     }
   }
 }

@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "date": {
+    "startDate": {
       "type": "date",
       "required": true
     },
@@ -73,6 +73,12 @@
       "type": "string",
       "default": "1928 Woodlawn Dr, Woodlawn, MD 21207, USA",
       "required": true
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "desc": {
+      "type": "blocks"
     }
   }
 }
