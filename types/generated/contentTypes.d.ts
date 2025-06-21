@@ -819,7 +819,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'1928 Woodlawn Dr, Woodlawn, MD 21207, USA'>;
     endDate: Attribute.Date;
-    desc: Attribute.Blocks & Attribute.Required;
+    description: Attribute.Blocks & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

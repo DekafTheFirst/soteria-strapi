@@ -73,7 +73,7 @@
     "endDate": {
       "type": "date"
     },
-    "desc": {
+    "description": {
       "type": "blocks",
       "required": true
     }
