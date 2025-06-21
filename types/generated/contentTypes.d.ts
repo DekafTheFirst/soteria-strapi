@@ -805,7 +805,6 @@ export interface ApiEventEvent extends Schema.CollectionType {
   };
   attributes: {
     startDate: Attribute.Date & Attribute.Required;
-    description: Attribute.RichText & Attribute.Required;
     image: Attribute.Media<'images'> & Attribute.Required;
     time: Attribute.Time;
     slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
@@ -820,7 +819,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'1928 Woodlawn Dr, Woodlawn, MD 21207, USA'>;
     endDate: Attribute.Date;
-    desc: Attribute.Blocks;
+    desc: Attribute.Blocks & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

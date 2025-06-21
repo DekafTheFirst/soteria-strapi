@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'postgres');
+  const client = env('DATABASE_CLIENT', 'sqlite');
 
   const connections = {
     mysql: {
@@ -53,7 +53,7 @@ module.exports = ({ env }) => {
         port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME', 'soteria'),
         user: env('DATABASE_USERNAME', 'postgres'),
-        password: env('DATABASE_PASSWORD', '#Paula2002'),
+        password: env('DATABASE_PASSWORD', 'password'),
         schema: env('DATABASE_SCHEMA', 'public'), // Not required
         ssl: false
       },
