@@ -977,6 +977,44 @@ export interface ApiRegisterationRegisteration extends Schema.CollectionType {
   };
 }
 
+export interface ApiSermonSermon extends Schema.CollectionType {
+  collectionName: 'sermons';
+  info: {
+    singularName: 'sermon';
+    pluralName: 'sermons';
+    displayName: 'Sermon';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audio: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true> &
+      Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    preacher: Attribute.String;
+    backgroundImage: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sermon.sermon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sermon.sermon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1000,6 +1038,7 @@ declare module '@strapi/types' {
       'api::member.member': ApiMemberMember;
       'api::prayer-request.prayer-request': ApiPrayerRequestPrayerRequest;
       'api::registeration.registeration': ApiRegisterationRegisteration;
+      'api::sermon.sermon': ApiSermonSermon;
     }
   }
 }
